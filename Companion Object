@@ -1,0 +1,46 @@
+//Kotlin ek statically typed language hai means yha pe phle se hi memory allocation ho jati hai means runtime pe use memory nhi milegi.
+//The Major purpose for preferring this is :  baar baar object create nhi krne prte jis se memoery occupation bhi km hoti hai.
+//Unneccessary runtime pe memory occupy nhi honge. Jaise Variable bht jagah use ho rhe to hm use memory statically allocate kr denge.
+//Kotlin me bydefault static keyword nhi hote so uske liye use me ate hai companion object.
+//In Some languages like java and c#, we use static keyword to declare the members of the class and use them without making any object i.e., just call
+them with the help of class name as a reference. so in kotlin we use companion object
+
+/// code 1
+
+class Sum(){
+val a : Int = 20; //not statically run time allocation
+
+companion object{
+val b: Int = 10;
+fun callme() = println("This method is called ")}
+
+Sum.b // - 1
+Sum.callme // -2
+
+Sum().a // -3
+
+//1 & 2 ko call krne ke liye class ke object ki requirement nhi hai, as 1 and 2 : statically allocated
+//3 need object
+
+///code 2
+
+fun main(){
+println("First Number: "+comp().x) //need of object
+println("Second Number: "+comp.y) //no need of object as run with class reference
+
+}//yhi major difference hai 
+
+
+
+class comp{
+var x =10
+
+fun Add(a:Int, b:Int): Int{
+return a+b}
+
+companion object(
+var y = 20
+
+fun Product(a: Int, b:Int): Int{
+return a*b
+}
